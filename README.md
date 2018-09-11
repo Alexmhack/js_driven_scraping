@@ -11,7 +11,7 @@ which is [selenium-python](https://selenium-python.readthedocs.io/)
 Using the instructions given in the docs for selenium-python install the selenium 
 and firefox drivers for selenium. Be sure to donwload 
 
-![geckodriver](https://github.com/Alexmhack/js_driven_scraping/master/images/Capture.PNG)
+![geckodriver](https://github.com/Alexmhack/js_driven_scraping/blob/master/images/Capture.PNG)
 
 Download ```32bit``` or ```64bit``` according to our specs for windows, unzip the 
 folder and add the path of that folder in **system variables**
