@@ -16,7 +16,7 @@ while count < 10:
     html = driver.execute_script("return document.documentElement.outerHTML")
     soup = BeautifulSoup(html, 'html.parser')
     images = []
-    for img in soup.findAll('img'):
+    for img in soup.findAll('img')[10]:
         src = img.get("src")
         images.append(src)
 
@@ -24,7 +24,7 @@ while count < 10:
     for img in images:
         try:
             file_path = os.path.basename(img)
-            img_res = requests.get(img)
+            img_res = requests.get(img, stream=True)
             new_path = os.path.join(current_path, 'images', file_path)
 
             with open(new_path, 'wb') as output_file:
