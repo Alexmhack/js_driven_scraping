@@ -9,8 +9,9 @@ html = driver.execute_script("return document.documentElement.outerHTML")
 
 soup = BeautifulSoup(html)
 
-images = soup.findAll('img')
-print(len(images))
+images = []
+for img in soup.findAll('img'):
+	src = img.get("src")
+	images.append(src)
 
-for img in images:
-	print(img.get("src"))
+print(images)
