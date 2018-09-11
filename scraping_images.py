@@ -1,3 +1,7 @@
+import os
+import requests
+import shutil
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
@@ -11,7 +15,17 @@ soup = BeautifulSoup(html)
 
 images = []
 for img in soup.findAll('img'):
-	src = img.get("src")
-	images.append(src)
+    src = img.get("src")
+    images.append(src)
 
-print(images)
+current_path = os.getcwd()
+
+for img in images:
+    file_path = os.path.basename(img)
+    img_res = requests.get(img)
+    new_path = os.path.join(current_path, 'images', file_path)
+
+    with open(new_path, 'wb') as output_file:
+        shutil.copyfileobj(img_res.raw, output_file)
+
+    del img_res
