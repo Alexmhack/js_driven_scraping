@@ -21,11 +21,15 @@ for img in soup.findAll('img'):
 current_path = os.getcwd()
 
 for img in images:
-    file_path = os.path.basename(img)
-    img_res = requests.get(img)
-    new_path = os.path.join(current_path, 'images', file_path)
+    try:
+        file_path = os.path.basename(img)
+        img_res = requests.get(img)
+        new_path = os.path.join(current_path, 'images', file_path)
 
-    with open(new_path, 'wb') as output_file:
-        shutil.copyfileobj(img_res.raw, output_file)
+        with open(new_path, 'wb') as output_file:
+            shutil.copyfileobj(img_res.raw, output_file)
 
-    del img_res
+        del img_res
+    except Exception as e:
+        print(e)
+        pass
